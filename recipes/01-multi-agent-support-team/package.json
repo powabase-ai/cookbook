@@ -1,0 +1,24 @@
+{
+  "name": "recipe-01-seed",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "step:1": "tsx step1-billing.ts",
+    "step:2": "tsx step2-add-specialists.ts",
+    "step:3": "tsx step3-orchestration.ts",
+    "seed": "tsx seed-agents.ts",
+    "dogfood": "tsx dogfood.ts",
+    "rls-test": "tsx rls-test.ts",
+    "concurrency-test": "tsx concurrency-test.ts",
+    "patch-prompts": "tsx patch-prompts.ts"
+  },
+  "devDependencies": {
+    "dotenv": "^17.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.1"
+  }
+}

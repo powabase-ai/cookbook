@@ -1,0 +1,29 @@
+{
+  "name": "recipe-02-seed",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "seed": "tsx seed.ts",
+    "seed:agents": "tsx seed-agents.ts",
+    "seed:vendor-history": "tsx seed-vendor-history.ts",
+    "upload": "tsx upload-invoices.ts",
+    "trigger:extractions": "tsx trigger-extractions.ts",
+    "generate-samples": "tsx generate-sample-invoices.ts",
+    "dogfood": "tsx dogfood.ts",
+    "probe:field-extract": "tsx probe-field-extractor.ts",
+    "probe:gl-coder": "tsx probe-gl-coder.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.20.0",
+    "dotenv": "^17.0.0",
+    "puppeteer": "^23.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.1",
+    "pg": "^8.20.0"
+  }
+}

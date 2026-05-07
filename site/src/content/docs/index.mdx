@@ -1,0 +1,75 @@
+---
+title: Powabase Cookbook
+description: Goal-oriented recipes for building on Powabase — short working apps that teach you how to use the platform end-to-end.
+template: splash
+hero:
+  tagline: Goal-oriented recipes for building on Powabase. Short, working apps that compose multiple platform features to do something concrete.
+  actions:
+    - text: Start with Recipe 01
+      link: /recipes/01-multi-agent-support-team/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/powabase-ai/cookbook
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Recipes
+
+<CardGrid>
+  <Card title="01 — Multi-agent customer support team" icon="rocket">
+    Supervisor orchestration routes user questions to specialized billing /
+    technical / product agents, each with its own knowledge base. Streams
+    answers and trace events.
+
+    [Open recipe →](/recipes/01-multi-agent-support-team/)
+  </Card>
+  <Card title="02 — HITL invoice extraction queue" icon="document">
+    An agent extracts typed invoice fields with per-field confidence;
+    ambiguous extractions escalate to a multi-user review queue with
+    realtime updates, presence avatars, and a chat-thread side-channel
+    for hint-driven re-extraction.
+
+    [Open recipe →](/recipes/02-hitl-invoice-extraction/)
+  </Card>
+  <Card title="More recipes coming soon" icon="seti:notebook">
+    Supabase-style user management, AI ticket triage with vision, semantic
+    product search, and Q&A over PDFs with citations are next. Check back
+    as they ship.
+  </Card>
+</CardGrid>
+
+## How recipes are organized
+
+Each recipe is one folder with a self-contained working app:
+
+- A narrative `README.md` with the story, architecture, and step-by-step build.
+- A `run.md` with setup and execution steps.
+- A `code/` subdirectory with the runnable source.
+- Optional: `schema.sql`, `policies.sql`, seed scripts, sample data.
+
+Recipes are independent. `cd` into any recipe folder, follow `run.md`, and
+you have a working app.
+
+## UI vs API
+
+Every recipe's primary execution path is code you can run. Studio is a
+**companion surface** — each recipe includes one to three optional
+*Inspect in Studio* moments where you're invited to look at what your code
+just produced from Studio's angle. You never need to click through Studio
+to complete a recipe; it's there to build intuition.
+
+## What you'll write
+
+Powabase is a Supabase superset, so the BaaS surfaces — auth (GoTrue),
+row-level security, REST (PostgREST), and Realtime (Postgres Changes /
+Presence / Broadcast) — work through the standard Supabase client
+libraries. Existing Supabase SDK knowledge transfers directly; the recipes
+use `@supabase/supabase-js` for those bits.
+
+Powabase's distinctive surfaces — agents, orchestrations, workflows,
+sources, knowledge bases — are exposed as plain HTTP endpoints under
+`/api/`. Recipes call them with `fetch`, no separate SDK to install.
+Each recipe's narrative shows the exact request shapes inline.

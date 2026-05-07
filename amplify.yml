@@ -1,0 +1,33 @@
+# AWS Amplify build spec for the Powabase Cookbook static site.
+#
+# Amplify reads this file from the connected repository's root. The cookbook
+# is synced from the monorepo to powabase-ai/cookbook (so this file lands at
+# the root of that repo). The actual site lives under `site/`; everything
+# else under this repo (`recipes/`, `TEMPLATE/`, `README.md`) is content
+# referenced by the site, not built independently.
+#
+# Build pipeline:
+#   1. preBuild: install site dependencies (clean install from lockfile).
+#   2. build: `npm run build` — runs `prebuild` (sync-recipes.mjs copies
+#      recipes/<slug>/README.md + assets/ into src/content/docs/recipes/),
+#      then `astro build` to produce static site under site/dist/.
+#   3. Amplify serves site/dist/ as the deployed artifact.
+
+version: 1
+applications:
+  - appRoot: site
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: dist
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - node_modules/**/*

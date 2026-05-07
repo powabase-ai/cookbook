@@ -1,0 +1,6 @@
+# Local credentials and setup state — never commit real values
+.env.local
+.env*.local
+
+# Node (seed-script deps) — committed via the Vite app's own lockfile later
+node_modules/
